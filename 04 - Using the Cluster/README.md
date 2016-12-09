@@ -21,7 +21,7 @@ a guide for those of you who prefer to launch the Spark jobs directly from their
 
 ## Step by step:
 
-1. Download Spark 1.6.2 with hadoop 2.6: https://spark.apache.org/downloads.html
+1) Download Spark 1.6.2 with hadoop 2.6: https://spark.apache.org/downloads.html
 
 First, you need a local copy of Apache Spark. 
 ```sh
@@ -30,14 +30,14 @@ tar -zxvf spark-1.6.2-bin-hadoop2.6.tgz
 ```
 Note: Spark is written in Scala and depends on the JVM. (sudo apt-get install default-jdk)
 - - - -
-2. Download the YARN configuration for the ADA cluster
+2) Download the YARN configuration for the ADA cluster
 
 YARN is the resources manager introduced with Hadoop 2.0. It takes care of the scalability of your Spark jobs and optimizes the usage of the cluster. 
 [Download the archive](ADA_YARN.zip) with the configuration, and unpack it in a local directory.
 
 - - - -
 
-3. Set the env variables YARN_CONF_DIR and YARN_CONF_DIR.
+3) Set the env variables YARN_CONF_DIR and YARN_CONF_DIR.
 
 ```sh
 export YARN_CONF_DIR=<YARN_config_directory>
@@ -48,14 +48,14 @@ Where *<YARN_config_directory>* is the full path of the directory where you have
 Note: this is temporary. If you want to avoid to type this setup every time you reboot you computer, update your shell config (i.e. $HOME/.bashrc)
 
 - - - -
-4. Create a new file called *spark-defaults.conf* in the config directory of Spark *(<spark_directory>/conf/spark-defaults.conf)* and add the the following lines:
+4) Create a new file called *spark-defaults.conf* in the config directory of Spark *(<spark_directory>/conf/spark-defaults.conf)* and add the the following lines:
 ```sh
 spark.driver.extraJavaOptions -Dhdp.version=2.7.1
 spark.yarn.am.extraJavaOptions -Dhdp.version=2.7.1
 ```
 This specifies the version of Hadoop that the ADA cluster is using.
 - - - -
-5. Enjoy (*responsibly*)! Now you can launch *pyspark* or *spark-submit* from your computer using the parameter --master yarn
+5) Enjoy (*responsibly*)! Now you can launch *pyspark* or *spark-submit* from your computer using the parameter --master yarn
 ```sh
 <spark_directory>/bin/pyspark --master yarn
 <spark_directory>/bin/spark-submit --master yarn yourjob.py
